@@ -528,9 +528,9 @@ public class StrategyRunner {
         uc.setOptimalPolicy();
 
         // Second Example - [ 5.2 ]:
-//
-//        UtilityCalculator uc2 = buildBookExample();
-//
-//        uc2.setOptimalPolicy();
+
+        UtilityCalculator uc2 = buildBookExample();
+
+        uc2.setOptimalPolicy();
     }
 }

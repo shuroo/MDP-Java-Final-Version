@@ -43,8 +43,7 @@ public class UtilityCalculator {
 
                 Double minimalUtility = state.getUtility();
                 Double prevUtility = state.getPreviousUtility();
-                //System.out.println("Utility found for state:"+state.getId()+" and bestAction:"+state.getBestAction()+" is: "+state.getUtility());
-                if (prevUtility == null) {
+               if (prevUtility == null) {
                     continue;
                 }
                 Double diffUtility = Math.abs(minimalUtility - prevUtility);

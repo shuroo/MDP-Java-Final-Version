@@ -2,8 +2,6 @@ package utils;
 
 import ctp.CTPEdge;
 import java.util.*;
-import java.util.stream.Collectors;
-import mdp.ctp.*;
 
 public class CollectionUtils<T> {
 
@@ -14,10 +12,6 @@ public class CollectionUtils<T> {
         return flatList;
     }
 
-    public static Map<String, State> stateToMap(Collection<State> states) {
-        return states.stream()
-                .collect(Collectors.toMap(State::getId, state -> state));
-    }
 
     public static HashMap<String, CTPEdge> edgeToMap(Collection<CTPEdge> edges) {
         HashMap<String,CTPEdge> statuses = new HashMap<String,CTPEdge>();
