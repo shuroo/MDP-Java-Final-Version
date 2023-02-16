@@ -64,7 +64,6 @@ public class UtilityCalculator {
                 System.out.println("**** Final Utility state:" + state.getId() + " is:" + state.getUtility() + " chosen action is: " + state.getBestAction());
             });
 
-            // currentMDP.setStates(allStates);
         }
 
         return currentMDP;
@@ -97,7 +96,6 @@ public class UtilityCalculator {
                 actionsWithUtility.put(sourceActionKey, new LinkedList<Action>());
             }
 
-            //System.out.println("Setting utility:"+utility+" for action:"+action.getActionId()+" on key:"+sourceActionKey);
             action.setUtility(utility);
             actionsWithUtility.get(sourceActionKey).add(action);
 
@@ -154,40 +152,18 @@ public class UtilityCalculator {
                 Double prevUtil = actionsPerSourceStt.get(transition);
                 actionsPerSourceStt.put(transition, prevUtil + actionLocalUtility);
             }
-            //   actionsPerSourceStt.put(transition, actionLocalUtility);
+
         }
 
         return actionsPerSourceStt;
     }
 
-    private HashMap<Transition, Double> calcTransitionsUtilityOld() {
-
-        // Init & Build Map<Transition,Utility>
-
-        HashMap<Transition, Double> actionsPerSourceStt = new HashMap<Transition, Double>();
-
-        for (Transition transition : currentMDP.getTransitions().values()) {
-            Double actionLocalUtility = calcStatesUtility(transition.getSourceState(),transition.getDestState(),transition.getAction());
-            if (!actionsPerSourceStt.containsKey(transition)) {
-                actionsPerSourceStt.put(transition, actionLocalUtility);
-            } else {
-                Double prevUtil = actionsPerSourceStt.get(transition);
-                actionsPerSourceStt.put(transition, prevUtil + actionLocalUtility);
-            }
-            //   actionsPerSourceStt.put(transition, actionLocalUtility);
-        }
-
-        return actionsPerSourceStt;
-    }
-
-    // U(s) <- R(s) + Sigma[ P(s|s')*U(s') ]
     private Double calcStatesUtility(State source, State dest, Action action) {
 
         if (source.getIsFinal()) {
             return source.getUtility() == null ? 0.0 : source.getUtility();
         } else {
 
-            // get P(s,s',a)
             Transition transition = currentMDP.getTransitions().get(Transition.buildId(action
                     , source, dest));
 
@@ -198,9 +174,7 @@ public class UtilityCalculator {
             // U(action) <-- Sigma[ P(s|s')*U(s') ]
             Double actionSubUtility = joinedProb * (dest.getUtility());
             // we DON'T set the source utility at this point YET! choosing minimum.
-
-            //System.out.println("transition:"+transition.getTransitionId()+"----^^:" + joinedProb + " actionSubUtility:" + actionSubUtility);
-            return actionSubUtility;
+           return actionSubUtility;
         }
     }
 
@@ -249,9 +223,6 @@ public class UtilityCalculator {
             minimalUtility = minimalUtility * this.discountFactor;
 
             state.setPreviousUtility(state.getUtility());
-            //minimalUtility = CollectionUtils.roundTwoDigits(minimalUtility);
-
-            //System.out.println("--### Setting utility: " + minimalUtility + " for state: " + state.getId() + "###--");
             state.setUtility(minimalUtility);
             state.setBestAction(minimalUtilityAction);
 
@@ -295,11 +266,6 @@ public class UtilityCalculator {
         return result;
     }
 
-    // TBD: override this and implement by constraints in the future (Blocked edge etc..)
-    private Boolean actionIsImpossible(State st, Action action) {
-        return false;
-    }
-
     /**
      * Given a state, filter all given actions related to it with updated calculated utility..
      *
@@ -312,12 +278,9 @@ public class UtilityCalculator {
         //todo: one can add filter for unneeded transitions de to constraints in the future.
         HashMap<String, Action> stateActions = new HashMap<String, Action>();
 
-        // check whether 'key' = action.getId()_state.getId(), and filter accordingly.
         stateActionsWithUtility.entrySet().stream().filter(tran -> tran.getKey().endsWith("_src:" +state.getId())).forEach(entry ->
                 stateActions.put(entry.getKey(), entry.getValue()));
 
-        // todo: add sort --- IF NEEDED! (currently it isn't , just use min or max)
-        //stateTransitions.values();
         return stateActions;
     }
 
