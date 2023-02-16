@@ -11,14 +11,6 @@ import java.util.UUID;
  */
 public class HashUuidCreator {
 
-    // Domain Name System
-    public static final UUID NAMESPACE_DNS = new UUID(0x6ba7b8109dad11d1L, 0x80b400c04fd430c8L);
-    // Uniform Resource Locator
-    public static final UUID NAMESPACE_URL = new UUID(0x6ba7b8119dad11d1L, 0x80b400c04fd430c8L);
-    // ISO Object ID
-    public static final UUID NAMESPACE_ISO_OID = new UUID(0x6ba7b8129dad11d1L, 0x80b400c04fd430c8L);
-    // X.500 Distinguished Name
-    public static final UUID NAMESPACE_X500_DN = new UUID(0x6ba7b8149dad11d1L, 0x80b400c04fd430c8L);
 
     private static final int VERSION_3 = 3; // UUIDv3 MD5
     private static final int VERSION_5 = 5; // UUIDv5 SHA1

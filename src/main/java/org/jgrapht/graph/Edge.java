@@ -15,17 +15,6 @@ public class Edge extends DefaultEdge {
     }
 
     public String getId(){ return this.source+"_"+this.target; }
-/*    public Vertex setDest() {
-        return this.getDest();
-    }
-
-    public void setSource(Vertex s) {
-        this.source = s;
-    }
-
-    public void setDest(Vertex s) {
-        this.target = s;
-    }*/
     public Vertex getDest() {
         return (Vertex)target;
     }
@@ -34,27 +23,6 @@ public class Edge extends DefaultEdge {
     public Object getTarget(){
         return target;
     }
-
-    public Edge(){}
-
-    public Edge(Vertex source, Vertex dest, Double prob, Double reward){
-        this.source = source;
-        this.target = dest;
-        this.blockingProbability = prob;
-        this.reward = reward;
-    }
-
-    public Edge(Edge e){
-        this.source = e.source;
-        this.target = e.target;
-    }
-//
-//    public  Boolean isBlocked() {
-//        return this.isBlocked;
-//    }
-//
-//
-//    public void setIsBlocked(Boolean isBlocked){ this.isBlocked = isBlocked;}
 
     public double getBlockingProbability() {
         return blockingProbability;

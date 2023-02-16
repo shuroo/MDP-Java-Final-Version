@@ -7,10 +7,8 @@ import java.util.List;
 
 public class MDP implements MDPI{
 
-    // HashMap <String StateId,State>  == State(state_id)
     protected HashMap<String,State> states;
 
-    // HashMap < StateID_ActionID, Double >  == R(s,a,s')
     protected HashMap<String,Reward> rewards;
 
 
@@ -23,10 +21,8 @@ public class MDP implements MDPI{
     // Check whether to solve a minimization or maximization problem.
     protected Boolean isMinimizationProblem;
 
-    // HashMap < StateID_ActionID, Transition > == P(s,a,s')
     protected HashMap<String,Transition> transitions;
 
-    // HashMap <String ActionId,Action>
     protected HashMap<String,Action> actions;
 
     protected void setStates(List<State> states) {
@@ -37,11 +33,8 @@ public class MDP implements MDPI{
     public MDP (
 
             HashMap<String,Transition> transitions,
-            // HashMap <String ActionId,Action>
             HashMap<String,Action> actions,
-            // HashMap <String StateId,State>  == State(state_id)
             HashMap<String,State> states,
-            // HashMap < StateID_ActionID, Double >  == R(s,a,s')
             HashMap<String,Reward> rewards,
 
             Boolean isMinimizationProblem

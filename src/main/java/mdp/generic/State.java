@@ -5,7 +5,6 @@ import mdp.interfaces.StateI;
 import org.jgrapht.graph.Vertex;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class State implements StateI {
 
@@ -33,22 +32,9 @@ public class State implements StateI {
         return isFinal;
     }
 
-    public void setFinal(Boolean aFinal) {
-        isFinal = aFinal;
-    }
-
-    public Boolean getInitial() {
-        return isInitial;
-    }
-
-    public void setInitial(Boolean initial) {
-        isInitial = initial;
-    }
-
     public Double getPreviousUtility() {
         return previousUtility;
     }
-
 
     public State(String stateId, Double initialUtility) {
         this.stateId = stateId;

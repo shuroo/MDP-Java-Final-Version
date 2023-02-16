@@ -15,13 +15,11 @@ public class Vertex<T> {
         return identifier;
     }
 
-    // todo: put in private
-    public boolean isInitial() {
+    boolean isInitial() {
         return isInitial;
     }
 
-    // todo: put in private
-    public boolean isFinal() {
+    boolean isFinal() {
         return isFinal;
     }
 
@@ -35,10 +33,6 @@ public class Vertex<T> {
         this.vertexEdges = new HashSet<Edge>();
     }
 
-    //default constructor - used by the gson lib when converting from json.
-    public Vertex(){
 
-        this.vertexEdges = new HashSet<Edge>();
-    }
 
 }

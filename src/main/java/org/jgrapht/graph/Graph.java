@@ -16,15 +16,7 @@ public class Graph<V, E> {
 
     private org.jgrapht.Graph<Vertex, Edge> graph = new DefaultDirectedGraph<>(Edge.class);
 
-    public Vertex getHead() {
-        return head;
-    }
-
     private Vertex head;
-
-    public Vertex getTail() {
-        return tail;
-    }
 
     private Vertex tail;
 
@@ -90,8 +82,6 @@ public class Graph<V, E> {
             return false;
         }
     }
-//
-//
 
     private void loadGraph(HashSet<Vertex> vertices, HashSet<Edge> edges) {
 

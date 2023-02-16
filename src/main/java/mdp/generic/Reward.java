@@ -9,22 +9,6 @@ public class Reward {
     private State destState;
     private Action action;
 
-    public State getSourceState() {
-        return sourceState;
-    }
-
-    public void setSourceState(State sourceState) {
-        this.sourceState = sourceState;
-    }
-
-    public State getDestState() {
-        return destState;
-    }
-
-    public void setDestState(State destState) {
-        this.destState = destState;
-    }
-
     public Action getAction() {
         return action;
     }
@@ -43,10 +27,6 @@ public class Reward {
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     // Value:

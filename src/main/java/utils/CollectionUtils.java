@@ -21,8 +21,6 @@ public class CollectionUtils<T> {
 
     public static HashMap<String, CTPEdge> edgeToMap(Collection<CTPEdge> edges) {
         HashMap<String,CTPEdge> statuses = new HashMap<String,CTPEdge>();
-        //        edges.stream().map({edg-> statuses.put(edg)});
-        //              //
         edges.stream().forEach(st->{statuses.put(st.getEdge().getId(), st);});
         return statuses;
     }
