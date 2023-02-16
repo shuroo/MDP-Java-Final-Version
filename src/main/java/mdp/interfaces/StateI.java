@@ -8,9 +8,6 @@ public interface StateI {
     // Override by implementation
     Double utility = 0.0;
 
-    // todo: override by implementation
-    //String state_id;
-
     public String getId();
 
     public Double getUtility();
