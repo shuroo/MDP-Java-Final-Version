@@ -52,13 +52,14 @@ public class UtilityCalculator {
                     maxLambda = diffUtility;
                 }
 
-                if (maxLambda <= stopCondition){//  && maxLambda != 0.0) {
+                if (maxLambda <= stopCondition){
 
                     System.out.println("***** Stopping at lambda:" + maxLambda + " on iteration:" + iterationCounter + " *****");
                     return currentMDP;
                 }
             }
 
+            // Pront the current final MDP Utilities:
             currentMDP.getStates().values().stream().forEach(state -> {
                 System.out.println("**** Final Utility state:" + state.getId() + " is:" + state.getUtility() + " chosen action is: " + state.getBestAction());
             });
@@ -210,8 +211,6 @@ public class UtilityCalculator {
 
             // U(s) <- R(s,a,(s'??)) + Utility(a)
 
-            // todo: avoid using the same state twice like in example 17.2
-
             String currentRewardId = Reward.buildId(
                     state, state, minimalUtilityAction);
 
@@ -229,9 +228,6 @@ public class UtilityCalculator {
 
 
     }
-
-
-    //todo: do we need to add functionality to check if the action is unblocked \ possible ???
 
 
     private Action findMinimalAction(HashMap<String, Action> sttActionsWithutility) {
@@ -274,7 +270,6 @@ public class UtilityCalculator {
 
     private HashMap<String, Action> filterStateActions(final State state, HashMap<String, Action> stateActionsWithUtility) {
 
-        //todo: one can add filter for unneeded transitions de to constraints in the future.
         HashMap<String, Action> stateActions = new HashMap<String, Action>();
 
         stateActionsWithUtility.entrySet().stream().filter(tran -> tran.getKey().endsWith("_src:" +state.getId())).forEach(entry ->

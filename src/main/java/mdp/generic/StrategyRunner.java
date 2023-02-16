@@ -411,8 +411,8 @@ public class StrategyRunner {
         transitions.put(t59.getTransitionId(), t59);
         Transition t60 = new Transition(s23, s24, down, 0.1);
         transitions.put(t60.getTransitionId(), t60);
-//
-//        // s24 transitions:
+
+//        // s24 transitions: Not allowed ( Don't exist) due to the problem constraints.
 
         ////// ------   LAST LINE:  --------
 

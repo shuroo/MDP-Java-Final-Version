@@ -1,10 +1,6 @@
 package mdp.generic;
 
-import ctp.CTPEdge;
 import mdp.interfaces.StateI;
-import org.jgrapht.graph.Vertex;
-
-import java.util.HashMap;
 
 public class State implements StateI {
 
@@ -15,11 +11,6 @@ public class State implements StateI {
     protected Boolean isFinal = false;
     protected Boolean isInitial = false;
     protected Double previousUtility;
-
-    // Extended properties for graphs only (not generic states)!
-
-    protected Vertex agentLocation;
-    protected HashMap<String, CTPEdge> statuses;
 
     public State(String stateId, Boolean isInitial, Boolean isFinal,Double initialUtility) {
         this.stateId = stateId;
