@@ -81,24 +81,4 @@ public class HashUuidCreator {
         }
         return result;
     }
-
-    /**
-     * For tests!
-     */
-    public static void main(String[] args) {
-
-        String string = "JUST_A_TEST_STRING";
-        UUID namespace = UUID.randomUUID(); // A custom name space
-
-        System.out.println("Java's generator");
-        System.out.println("UUID.nameUUIDFromBytes():      '" + UUID.nameUUIDFromBytes(string.getBytes()) + "'");
-        System.out.println();
-        System.out.println("This generator");
-        System.out.println("HashUuidCreator.getMd5Uuid():  '" + HashUuidCreator.getMd5Uuid(string) + "'");
-        System.out.println("HashUuidCreator.getSha1Uuid(): '" + HashUuidCreator.getSha1Uuid(string) + "'");
-        System.out.println();
-        System.out.println("This generator WITH name space");
-        System.out.println("HashUuidCreator.getMd5Uuid():  '" + HashUuidCreator.getMd5Uuid(namespace, string) + "'");
-        System.out.println("HashUuidCreator.getSha1Uuid(): '" + HashUuidCreator.getSha1Uuid(namespace, string) + "'");
-    }
 }

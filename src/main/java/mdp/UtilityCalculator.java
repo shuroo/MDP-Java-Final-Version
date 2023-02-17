@@ -24,6 +24,11 @@ public class UtilityCalculator {
         this.epsilon = epsilon;
     }
 
+    /**
+     * Main Method for Optimal policy calculation based on Value Iteration algorithm.
+     *
+     * @return MDP - The calculated MDP + policy.
+     */
     public MDP setOptimalPolicy() {
 
         Integer iterationCounter = 0;
@@ -59,7 +64,7 @@ public class UtilityCalculator {
                 }
             }
 
-            // Pront the current final MDP Utilities:
+            // Print the current final MDP Utilities:
             currentMDP.getStates().values().stream().forEach(state -> {
                 System.out.println("**** Final Utility state:" + state.getId() + " is:" + state.getUtility() + " chosen action is: " + state.getBestAction());
             });
@@ -158,6 +163,13 @@ public class UtilityCalculator {
         return actionsPerSourceStt;
     }
 
+    /**
+     * TBDDDD
+     * @param source
+     * @param dest
+     * @param action
+     * @return
+     */
     private Double calcStatesUtility(State source, State dest, Action action) {
 
         if (source.getIsFinal()) {
@@ -179,6 +191,8 @@ public class UtilityCalculator {
     }
 
     /**
+     * TBDDD
+     *
      * Method to set utility per iteration for all states.
      *
      * @param allStates - all possible states
@@ -196,12 +210,16 @@ public class UtilityCalculator {
         return allStates;
     }
 
+    /**
+     * Calc Utility+ Action for a single state based on the total minimal utility calculated and best next-action
+     * @param state - the given state
+     * @param updatedStateActionsUtility - the current map of <state, list of actions>
+     */
     private void setUtilitySingleState(State state, HashMap<String, Action> updatedStateActionsUtility) {
 
         //  Get all actions belonging to this state:
         HashMap<String, Action> actionsWithUtility = filterStateActions(state, updatedStateActionsUtility);
 
-       // System.out.println("State: "+state.getId()+" has actions with utility of size:"+actionsWithUtility.size());
         Action minimalUtilityAction = null;
         Double minimalUtility = 0.0;
 
@@ -211,6 +229,7 @@ public class UtilityCalculator {
 
             // U(s) <- R(s,a,(s'??)) + Utility(a)
 
+            // Generate a new reward object:
             String currentRewardId = Reward.buildId(
                     state, state, minimalUtilityAction);
 
@@ -218,10 +237,13 @@ public class UtilityCalculator {
                     currentMDP.getRewards().get(currentRewardId).getReward() : 0.0) : 0.0;
             minimalUtility = minimalUtilityAction != null ? (reward + minimalUtilityAction.getUtility()) : 0.0;
 
+            // Set new updated utility:
             minimalUtility = minimalUtility * this.discountFactor;
 
+            // Set the current utility to previous before re-iterating
             state.setPreviousUtility(state.getUtility());
             state.setUtility(minimalUtility);
+            // And set the selected action for setting policy.
             state.setBestAction(minimalUtilityAction);
 
         }
@@ -230,6 +252,11 @@ public class UtilityCalculator {
     }
 
 
+    /**
+     *  Method to find the best next action based of the minimal utility found.
+     * @param sttActionsWithutility - Map of <State, Actions (With Utility)>
+     * @return The Best action found.
+     */
     private Action findMinimalAction(HashMap<String, Action> sttActionsWithutility) {
 
         Double finalUtility = 10000.0;
