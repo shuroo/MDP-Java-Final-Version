@@ -1,25 +1,30 @@
 package mdp.interfaces;
 
-import mdp.generic.Action;
 
+/**
+ * Interface for an MDP State
+ * @author Shiri Rave
+ * @since January 2023
+ */
 public interface StateI {
 
-
-    // Override by implementation
-    Double utility = 0.0;
-
+    /**
+     * Getter Method to return the state ID
+     * @return String, the state id
+     */
     public String getId();
 
+    /**
+     * Getter Method to return the state utility
+     * @return Double, the state utility
+     */
     public Double getUtility();
 
+    /**
+     * Setter Method to set the state utility
+     * @param utility, the utility to set
+     */
     public void setUtility(Double utility);
 
-    public Action getBestAction();
-
-    public  void setBestAction(Action action);
-
-    public void setPreviousUtility(Double utility);
-
-    public Double getPreviousUtility();
 
 }

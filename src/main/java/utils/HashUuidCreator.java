@@ -7,7 +7,14 @@ import java.util.UUID;
 
 /**
  * Utility class that creates UUIDv3 (MD5) and UUIDv5 (SHA1).
+ * Used to create a unique uuid - a shortened id for reward objects etc.
+ * Using a HashMap.
  *
+ * The code is taken from:
+ * https://gist.github.com/fabiolimace/d43ef0ffb4f2e639bb0d81906963bb35
+ *
+ * Used by Shiri Rave,
+ * @since January 2023.
  */
 public class HashUuidCreator {
 
@@ -52,20 +59,8 @@ public class HashUuidCreator {
         }
     }
 
-    public static UUID getMd5Uuid(String string) {
-        return getHashUuid(null, string, MESSAGE_DIGEST_MD5, VERSION_3);
-    }
-
     public static UUID getSha1Uuid(String string) {
         return getHashUuid(null, string, MESSAGE_DIGEST_SHA1, VERSION_5);
-    }
-
-    public static UUID getMd5Uuid(UUID namespace, String string) {
-        return getHashUuid(namespace, string, MESSAGE_DIGEST_MD5, VERSION_3);
-    }
-
-    public static UUID getSha1Uuid(UUID namespace, String string) {
-        return getHashUuid(namespace, string, MESSAGE_DIGEST_SHA1, VERSION_5);
     }
 
     private static byte[] toBytes(final long number) {

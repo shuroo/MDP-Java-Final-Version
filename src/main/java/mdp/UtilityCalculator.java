@@ -14,12 +14,16 @@ import java.util.stream.Collectors;
  */
 public class UtilityCalculator {
 
+    // Epsilon - the maximum allowed error ( calculating a smaller error is indicates convergence )
     private Double epsilon;
+
+    // The discount factor - between 0 and 1
     private Double discountFactor;
 
+    // The current MDP model
     private MDP currentMDP;
 
-    // --- Parameter for setting during calculation. for private usage: ---
+    // The maximum possible error, by default set to near infinite value.
     private Double maxLambda = 100000.0;
 
     /**
@@ -266,11 +270,13 @@ public class UtilityCalculator {
 
     /**
      *  Method to find the best next action based of the minimal utility found.
+     *  Used in minimization problems only.
      * @param sttActionsWithutility - Map of <State, Actions (With Utility)>
      * @return The Best action found.
      */
     private Action findMinimalAction(HashMap<String, Action> sttActionsWithutility) {
 
+        // The initial utility value should be extremely high, in order to improve iteratively
         Double finalUtility = 10000.0;
         Action result = null;
         for (String actionStateKey : sttActionsWithutility.keySet()) {
@@ -284,8 +290,15 @@ public class UtilityCalculator {
         return result;
     }
 
+    /**
+     *  Method to find the best next action based of the maximal utility found.
+     *  Used in maximization problems only.
+     * @param sttActionsWithUtility - Map of <State, Actions (With Utility)>
+     * @return The Best action found.
+     */
     private Action findMaximalAction(HashMap<String, Action> sttActionsWithUtility) {
 
+        // The initial utility value should be extremely low, to improve iteratively
         Double finalUtility = -10000.0;
         Action result = null;
         for (String actionStateKey : sttActionsWithUtility.keySet()) {

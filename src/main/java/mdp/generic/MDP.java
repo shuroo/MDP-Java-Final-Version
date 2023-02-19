@@ -5,31 +5,46 @@ import mdp.interfaces.MDPI;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Class to represent an MDP model (implements the MDP interface)
+ *
+ * @author Shiri Rave
+ * @since January 2023
+ */
 public class MDP implements MDPI{
 
+    // The MDP States HashMap - Representing all MDP states along with their IDS , AKA HMap keys.
     protected HashMap<String,State> states;
 
+    // The MDP Rewards HashMap - Representing all MDP rewards along with their IDS , AKA HMap keys.
     protected HashMap<String,Reward> rewards;
 
 
-    public MDP(){}
-
-    public Boolean isMinimizationProblem() {
-        return isMinimizationProblem;
-    }
-
-    // Check whether to solve a minimization or maximization problem.
-    protected Boolean isMinimizationProblem;
-
+    // The MDP Transitions HashMap - Representing all MDP transitions along with their IDS , AKA HMap keys.
     protected HashMap<String,Transition> transitions;
 
+
+    // The MDP Actions HashMap - Representing all MDP actions along with their IDS , AKA HMap keys.
     protected HashMap<String,Action> actions;
 
-    protected void setStates(List<State> states) {
-        this.states = new HashMap<String,State>();
-        states.stream().forEach(stt-> this.states.put(stt.getId(),stt));
-    }
+    // isMinimizationProblem - Variable to Check whether the model belongs to a minimization or a maximization problem.
+    protected Boolean isMinimizationProblem;
 
+
+
+    /**
+     * Default MDP Constructor , Initially empty
+     */
+    public MDP(){}
+
+    /**
+     * An MDP Constructor Method
+     * @param transitions - The MDP Map of Transitions
+     * @param actions - The MDP Map of Actions
+     * @param states - The MDP Map of States
+     * @param rewards - The MDP Map of Rewards
+     * @param isMinimizationProblem - 'True' if this is a minimization problem, 'False' if this is a maximization problem
+     */
     public MDP (
 
             HashMap<String,Transition> transitions,
@@ -47,19 +62,45 @@ public class MDP implements MDPI{
     }
 
 
+    /**
+     * Getter Method to return all MDP transitions
+     * @return HashMap - All MDP Transitions + TransitionIDs (-its' keys)
+     */
     public HashMap<String, Transition> getTransitions() {
         return transitions;
     }
 
+    /**
+     * Getter Method to return all MDP actions
+     * @return HashMap - All MDP Actions + ActionIDs (-the HMap keys)
+     */
     public HashMap<String, Action> getActions() {
         return actions;
     }
 
+    /**
+     * Getter Method to return all MDP states
+     * @return HashMap - All MDP State + StateID (-The HMap Keys)
+     */
     public HashMap<String, State> getStates() {
         return states;
     }
 
+    /**
+     * Getter Method to return all MDP rewards
+     * @return HashMap - All MDP Reward + RewardID (-The HMap Keys)
+     */
+
     public HashMap<String, Reward> getRewards() {
         return rewards;
     }
+
+    /**
+     * Boolean Getter Method - return isMinimizationProblem variable value ( True in case of minimization, false otherwise ).
+     * @return Boolean - Return isMinimizationProblem variable value
+     */
+    public Boolean isMinimizationProblem() {
+        return isMinimizationProblem;
+    }
+
 }

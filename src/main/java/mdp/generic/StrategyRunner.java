@@ -16,12 +16,15 @@ public class StrategyRunner {
          *
          * https://people.eecs.berkeley.edu/~pabbeel/cs287-fa12/slides/mdps-exact-methods.pdf
          *
-         * STATUS: TESTED, WORKING!!!
+         * Also known as example 5.1 in the project docs.
          *
-         * @return
+         * Creates an MDP according to the given problem and calculates it's best policy according to VI algorithm.
+         *
+         * @return a utilityClculator - an MDP model wrapped with a given Epsilon and a Discount factor.
          */
     public static UtilityCalculator buildMDPAndExactSolutionMethodsExample(){
 
+        // A.Build an MDP for the given problem:
 
         HashMap<String, State> states = new HashMap<String, State>();
 
@@ -255,8 +258,15 @@ public class StrategyRunner {
     }
 
     /**
-     * Implementation of example 17.2 in the book.
-     * @return
+     * Implementation of example from:
+     *
+     *  Implementation of example 17.2 in 20551 course book - "Artificial Intelligence, a modern approach"
+     *
+     * Also known as example 5.2 in the project docs.
+     *
+     * Creates an MDP according to the given problem and calc it's best policy according to VI algorithm.
+     *
+     * @return a utilityCalculator - an MDP model wrapped with a given Epsilon and a Discount factor.
      */
 
     public static UtilityCalculator buildBookExample(){
