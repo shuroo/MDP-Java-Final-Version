@@ -7,6 +7,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Main class to calculate value iteration algorithm by states.
+ * @author shirirave
+ * @since 01/2023
+ */
 public class UtilityCalculator {
 
     private Double epsilon;
@@ -17,6 +22,12 @@ public class UtilityCalculator {
     // --- Parameter for setting during calculation. for private usage: ---
     private Double maxLambda = 100000.0;
 
+    /**
+     * TBD
+     * @param currentMDP
+     * @param epsilon
+     * @param discountFactor
+     */
     public UtilityCalculator(MDP currentMDP, Double epsilon, Double discountFactor) {
 
         this.currentMDP = currentMDP;
@@ -150,7 +161,7 @@ public class UtilityCalculator {
         HashMap<Transition, Double> actionsPerSourceStt = new HashMap<Transition, Double>();
 
         for (Transition transition : currentMDP.getTransitions().values()) {
-            Double actionLocalUtility = calcStatesUtility(transition.getSourceState(), transition.getDestState(), transition.getAction());
+            Double actionLocalUtility = calcStateUtility(transition.getSourceState(), transition.getDestState(), transition.getAction());
             if (!actionsPerSourceStt.containsKey(transition)) {
                 actionsPerSourceStt.put(transition, actionLocalUtility);
             } else {
@@ -164,13 +175,13 @@ public class UtilityCalculator {
     }
 
     /**
-     * TBDDDD
-     * @param source
-     * @param dest
-     * @param action
-     * @return
+     * Find a single state future utility based on its current and future states.
+     * @param source - The current state.
+     * @param dest - The future state.
+     * @param action - The given action to pass from state s to state s'.
+     * @return - Double - The calculated Utility Value.
      */
-    private Double calcStatesUtility(State source, State dest, Action action) {
+    private Double calcStateUtility(State source, State dest, Action action) {
 
         if (source.getIsFinal()) {
             return source.getUtility() == null ? 0.0 : source.getUtility();
@@ -191,12 +202,11 @@ public class UtilityCalculator {
     }
 
     /**
-     * TBDDD
      *
-     * Method to set utility per iteration for all states.
+     * Method to update the current utility per iteration for all states.
      *
      * @param allStates - all possible states
-     * @return
+     * @return  List<State> - List of states with updated utilities
      */
     private List<State> setUtilitiesForStatesIteration(List<State> allStates) {
         HashMap<Transition, Double> updatedTransitionsUtility = calcTransitionsUtility();
@@ -211,9 +221,10 @@ public class UtilityCalculator {
     }
 
     /**
-     * Calc Utility+ Action for a single state based on the total minimal utility calculated and best next-action
-     * @param state - the given state
-     * @param updatedStateActionsUtility - the current map of <state, list of actions>
+     * Method to calc utility and choose best Action for a single state,
+     * based on the total minimal utility calculated and best next-action
+     * @param state - The current state
+     * @param updatedStateActionsUtility - The current map of <state, list of actions> to choose the best from.
      */
     private void setUtilitySingleState(State state, HashMap<String, Action> updatedStateActionsUtility) {
 
@@ -223,6 +234,7 @@ public class UtilityCalculator {
         Action minimalUtilityAction = null;
         Double minimalUtility = 0.0;
 
+        // Choose between a minimal or a maximal action
         if (!actionsWithUtility.isEmpty()) {
             minimalUtilityAction = currentMDP.isMinimizationProblem() ? findMinimalAction(
                     actionsWithUtility) : findMaximalAction(actionsWithUtility);

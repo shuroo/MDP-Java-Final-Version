@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="05124bf8-e956-4e88-a7b8-9632fdd43f0b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mdp/UtilityCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mdp/UtilityCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/HashUuidCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/HashUuidCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mdp/generic/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mdp/generic/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mdp/generic/StrategyRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mdp/generic/StrategyRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mdp/UtilityCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mdp/UtilityCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/HashUuidCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/HashUuidCreator.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -477,12 +477,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/mdp/UtilityCalculator.java</url>
-          <line>157</line>
+          <line>168</line>
           <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/mdp/generic/StrategyRunner.java</url>
-          <line>527</line>
+          <line>532</line>
           <option name="timeStamp" value="141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">

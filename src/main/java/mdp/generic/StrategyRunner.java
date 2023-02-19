@@ -4,6 +4,11 @@ import mdp.UtilityCalculator;
 
 import java.util.HashMap;
 
+/**
+ * Main method to construct and run given benchmarks.
+ * @authos shirirave
+ * @since january, 2023
+ */
 public class StrategyRunner {
 
         /**
